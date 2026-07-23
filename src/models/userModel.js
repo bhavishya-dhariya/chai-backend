@@ -52,7 +52,7 @@ const userSchema = new  Schema(
 userSchema.pre("save" , async function (next){              //pre ek middleware h jiske pass sare schame data 
     if (! this.isModified("password")) return next();       // ka access h usse or bcrypt se pass hash kiya h 
 
-    this.password = bcrypt.hash(this.password , 10)
+    this.password = await bcrypt.hash(this.password , 10)
     next()
 })
 
