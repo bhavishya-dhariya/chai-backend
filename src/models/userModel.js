@@ -53,7 +53,7 @@ userSchema.pre("save" , async function (next){              //pre ek middleware 
     if (! this.isModified("password")) return next();       // ka access h usse or bcrypt se pass hash kiya h 
 
     this.password = await bcrypt.hash(this.password , 10)
-    next()
+
 })
 
 userSchema.methods.isPasswordCorrect = async function(password){      // yha apne apna custom method banaya h
